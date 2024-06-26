@@ -1,0 +1,11 @@
+## LLaVA 7B
+llava-v1.5-7b:
+    model_name: llava-v1.5
+    model_dir: liuhaotian/llava-v1.5-7b
+    gen_kwargs:
+        max_new_tokens: 512
+        min_new_tokens: 1
+        do_sample: false
+        temperature: 0.0
+    max_context_len: 4096
+    n_tokens_per_image: 576

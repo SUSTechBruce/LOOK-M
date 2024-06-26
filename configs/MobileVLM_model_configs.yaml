@@ -1,0 +1,11 @@
+## LLaVA 7B
+InternVL-v1_5:
+    model_name: MobileVLM
+    model_dir: mtgv/MobileVLM_V2-3B
+    gen_kwargs:
+        max_new_tokens: 512
+        min_new_tokens: 1
+        do_sample: false
+        temperature: 0.0
+    max_context_len: 2048
+    n_tokens_per_image: 144

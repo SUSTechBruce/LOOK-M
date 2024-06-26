@@ -1,0 +1,11 @@
+## LLaVA 7B
+Yi-VL:
+    model_name: Yi-VL
+    model_dir: 01-ai/Yi-VL-6B
+    gen_kwargs:
+        max_new_tokens: 512
+        min_new_tokens: 1
+        do_sample: false
+        temperature: 0.0
+    max_context_len: 4096
+    n_tokens_per_image: 576

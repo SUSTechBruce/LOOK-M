@@ -1,0 +1,11 @@
+## LLaVA 7B
+InternVL-v1_5:
+    model_name: InternVL-v1_5
+    model_dir: OpenGVLab/InternVL-Chat-ViT-6B-Vicuna-7B
+    gen_kwargs:
+        max_new_tokens: 512
+        min_new_tokens: 1
+        do_sample: false
+        temperature: 0.0
+    max_context_len: 4096
+    n_tokens_per_image: 576
