@@ -1,3 +1,0 @@
-images
-llava
-mm-vet
