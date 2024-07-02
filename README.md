@@ -12,8 +12,8 @@
 
 <h5 align=center>
 
-[![arXiv](https://img.shields.io/badge/Arxiv-2406.18139-red?logo=arxiv&label=Arxiv&color=red)](https://arxiv.org/abs/2406.18139)
 [![Transformers](https://img.shields.io/badge/%F0%9F%A4%97Transformers-v4.33.1-brightgreen)](https://github.com/huggingface/transformers)
+[![arXiv](https://img.shields.io/badge/Arxiv-2406.18139-red?logo=arxiv&label=Arxiv&color=red)](https://arxiv.org/abs/2406.18139)
 [![License](https://img.shields.io/badge/Code%20License-MIT%20License-yellow)](https://github.com/SUSTechBruce/LOOK-M/blob/main/LICENSE)
 </h5>
 
