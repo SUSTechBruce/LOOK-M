@@ -253,7 +253,6 @@ class PivotKVCache_LayerWise:
         self.hh_score = None
         self.hh_ratio = hh_ratio
         self.recent_ratio = recent_ratio
-        self.threshold = None
         # print(f"H2OKVCache-LayerWise: {hh_ratio}, {recent_ratio}")
 
     def __call__(self, past_key_values, attn_score_cache):
@@ -352,7 +351,6 @@ class TextAVGMergeKVCache_LayerWise:
         self.hh_score = None
         self.hh_ratio = hh_ratio
         self.recent_ratio = recent_ratio
-        self.threshold = None
         self.image_save_ratio = None
         # print(f"H2OKVCache-LayerWise: {recent_size}, {hh_size}")
         print(f"H2OKVCache-LayerWise:{recent_ratio}, {hh_ratio}")
@@ -404,11 +402,7 @@ class TextAVGMergeKVCache_LayerWise:
         similarity = (k_hh_pruned / torch.norm(k_hh_pruned, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128)) @ ((k_hh_recent / (torch.norm(k_hh_recent, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128))).transpose(-1, -2)) # cosin
         max_values, max_indices = similarity.max(dim=-1)
         # ###############################open when ori merge open##################################
-        if self.threshold == None:
-            self.threshold = max_values.mean()
-        else:
-            self.threshold = (self.threshold + max_values.mean()) / 2
-        filter_indices = (max_values.mean(1)>=self.threshold).squeeze(0)
+        filter_indices = (max_values.mean(1)>=max_values.mean()).squeeze(0)
         merged_indices = max_indices[..., filter_indices].unsqueeze(-1).repeat(1, 1, 1, 128)
         merge_weights = max_values[..., filter_indices].unsqueeze(-1).repeat(1, 1, 1, 128)
         k_hh_merged = k_hh_pruned[..., filter_indices, :]
@@ -455,7 +449,6 @@ class AVGMergeKVCache_LayerWise:
         self.hh_score = None
         self.hh_ratio = hh_ratio
         self.recent_ratio = recent_ratio
-        self.threshold = None
         self.image_save_ratio = None
         # print(f"H2OKVCache-LayerWise: {recent_size}, {hh_size}")
         print(f"H2OKVCache-LayerWise:{recent_ratio}, {hh_ratio}")
@@ -511,11 +504,7 @@ class AVGMergeKVCache_LayerWise:
         max_values, max_indices = similarity.max(dim=-1)
         # breakpoint()   
         ###############################open when ori merge open##################################
-        if self.threshold == None:
-            self.threshold = max_values.mean()
-        else:
-            self.threshold = (self.threshold + max_values.mean()) / 2
-        filter_indices = (max_values.mean(1)>=self.threshold).squeeze(0)
+        filter_indices = (max_values.mean(1)>=max_values.mean()).squeeze(0)
         merged_indices = max_indices[..., filter_indices].unsqueeze(-1).repeat(1, 1, 1, 128)
         merge_weights = max_values[..., filter_indices].unsqueeze(-1).repeat(1, 1, 1, 128)
         k_hh_merged = k_hh_pruned[..., filter_indices, :]
@@ -562,7 +551,6 @@ class WeightedMergeKVCache_LayerWise:
         self.hh_score = None
         self.hh_ratio = hh_ratio
         self.recent_ratio = recent_ratio
-        self.threshold = None
         self.image_save_ratio = None
         # print(f"H2OKVCache-LayerWise: {recent_size}, {hh_size}")
         print(f"H2OKVCache-LayerWise:{recent_ratio}, {hh_ratio}")
@@ -616,11 +604,7 @@ class WeightedMergeKVCache_LayerWise:
         similarity = (k_hh_pruned / torch.norm(k_hh_pruned, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128)) @ ((k_hh_recent / (torch.norm(k_hh_recent, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128))).transpose(-1, -2)) # cosin
         max_values, max_indices = similarity.max(dim=-1)
         ###############################open when ori merge open##################################
-        if self.threshold == None:
-            self.threshold = max_values.mean()
-        else:
-            self.threshold = (self.threshold + max_values.mean()) / 2
-        filter_indices = (max_values.mean(1)>=self.threshold).squeeze(0)
+        filter_indices = (max_values.mean(1)>=max_values.mean()).squeeze(0)
         merged_indices = max_indices[..., filter_indices].unsqueeze(-1).repeat(1, 1, 1, 128)
         merge_weights = max_values[..., filter_indices].unsqueeze(-1).repeat(1, 1, 1, 128)
         k_hh_merged = k_hh_pruned[..., filter_indices, :]
@@ -668,7 +652,6 @@ class TextPivotMerge_LayerWise:
         self.hh_score = None
         self.hh_ratio = hh_ratio
         self.recent_ratio = recent_ratio
-        self.threshold = None
         self.image_save_ratio = None
         # print(f"H2OKVCache-LayerWise: {recent_size}, {hh_size}")
         print(f"H2OKVCache-LayerWise:{recent_ratio}, {hh_ratio}")
@@ -764,7 +747,6 @@ class TextWeightedMerge_LayerWise:
         self.hh_score = None
         self.hh_ratio = hh_ratio
         self.recent_ratio = recent_ratio
-        self.threshold = None
         self.image_save_ratio = None
         # print(f"H2OKVCache-LayerWise: {recent_size}, {hh_size}")
         print(f"H2OKVCache-LayerWise:{recent_ratio}, {hh_ratio}")
@@ -816,11 +798,7 @@ class TextWeightedMerge_LayerWise:
         similarity = (k_hh_pruned / torch.norm(k_hh_pruned, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128)) @ ((k_hh_recent / (torch.norm(k_hh_recent, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128))).transpose(-1, -2)) # cosin
         max_values, max_indices = similarity.max(dim=-1)
         # ###############################open when ori merge open##################################
-        if self.threshold == None:
-            self.threshold = max_values.mean()
-        else:
-            self.threshold = (self.threshold + max_values.mean()) / 2
-        filter_indices = (max_values.mean(1)>=self.threshold).squeeze(0)
+        filter_indices = (max_values.mean(1)>=max_values.mean()).squeeze(0)
         merged_indices = max_indices[..., filter_indices].unsqueeze(-1).repeat(1, 1, 1, 128)
         merge_weights = max_values[..., filter_indices].unsqueeze(-1).repeat(1, 1, 1, 128)
         k_hh_merged = k_hh_pruned[..., filter_indices, :]
@@ -2928,7 +2906,6 @@ class PoolingKVCache_LayerWise:
         self.hh_score = None
         self.hh_ratio = hh_ratio
         self.recent_ratio = recent_ratio
-        self.threshold = None
 
 
         ############## add for pooling window #################
