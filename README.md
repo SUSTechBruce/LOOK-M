@@ -4,7 +4,7 @@
 
 <h2 align="center"><a href="https://arxiv.org/abs/2406.18139">🔭LOOK-M: Look-Once Optimization in KV Cache for Efficient Multimodal Long-Context Inference</a></h2>
 
-
+> *<sup>1</sup>The Ohio State University, <sup>2</sup>Peking University, <sup>3</sup>Imperial College London, <sup>4</sup>Tencent AI Lab*
 
 <h5 align="center"> If you find our project helpful, please give us a star ⭐ on GitHub to stay updated.</h5>
 
