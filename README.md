@@ -1,8 +1,8 @@
 <div align="center">
-<img src="figs/logo.png" width="30%"> <br>
+<img src="figs/logo.png" width="180px"> <br>
 </div>
 
-<h2 align="center"><a href="https://arxiv.org/abs/2406.18139">🔭LOOK-M: Look-Once Optimization in KV Cache for Efficient Multimodal Long-Context Inference (Findings of EMNLP 2024)</a></h2>
+<h2 align="center"><a href="https://arxiv.org/abs/2406.18139">🔭LOOK-M: Look-Once Optimization in KV Cache for Efficient Multimodal Long-Context Inference (EMNLP 2024 Findings)</a></h2>
 
 > *<sup>1</sup>The Ohio State University, <sup>2</sup>Peking University, <sup>3</sup>Imperial College London, <sup>4</sup>Tencent AI Lab*
 
@@ -15,6 +15,7 @@
 [![Transformers](https://img.shields.io/badge/%F0%9F%A4%97Transformers-v4.33.1-brightgreen)](https://github.com/huggingface/transformers)
 [![arXiv](https://img.shields.io/badge/Arxiv-2406.18139-red?logo=arxiv&label=Arxiv&color=red)](https://arxiv.org/abs/2406.18139)
 [![License](https://img.shields.io/badge/Code%20License-MIT%20License-yellow)](https://github.com/SUSTechBruce/LOOK-M/blob/main/LICENSE)
+![GitHub Repo stars](https://img.shields.io/github/stars/SUSTechBruce/LOOK-M)
 </h5>
 
 ## Overview
